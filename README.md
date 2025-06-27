@@ -1,2 +1,2 @@
 # artifi-project
-artifi tech first Repository
+artifi tech full stack
