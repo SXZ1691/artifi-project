@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eLibrary</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #343a40;
+      padding: 15px;
+      text-align: center;
+      color: white;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 40px;
+    }
+    .login-box {
+      background-color: white;
+      padding: 30px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .login-box h3 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+    .library-page {
+      display: flex;
+      padding: 20px;
+    }
+    .sidebar {
+      width: 200px;
+      border-right: 1px solid #ccc;
+      padding-right: 20px;
+    }
+    .sidebar h4 {
+      margin-bottom: 10px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .books {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+      padding-left: 20px;
+    }
+    .book-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .book-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>eLibrary</h1>
+  </header>  <div id="loginSection" class="container">
+    <div class="login-box">
+      <h3>Admin Login</h3>
+      <input type="email" id="adminEmail" placeholder="Email address">
+      <input type="password" id="adminPass" placeholder="Password">
+      <button onclick="login('admin')">Login</button>
+    </div>
+    <div class="login-box">
+      <h3>Librarian Login</h3>
+      <input type="email" id="libEmail" placeholder="Email address">
+      <input type="password" id="libPass" placeholder="Password">
+      <button onclick="login('librarian')">Login</button>
+    </div>
+  </div>  <div id="libraryPage" class="library-page hidden">
+    <div class="sidebar">
+      <h4>Genres</h4>
+      <ul>
+        <li>Anesthesiology</li>
+        <li>Cardiology</li>
+        <li>Neurology</li>
+        <li>Emergency</li>
+        <li>Pediatrics</li>
+      </ul>
+    </div>
+    <div class="books">
+      <div class="book-card">
+        <img src="nuro.jpeg" height=100 width=50>
+        <p>Neuro ICU</p>
+      </div>
+      <div class="book-card">
+        <img src="ans.jpeg" alt="Book">
+        <p>Anesthesiology Review</p>
+      </div>
+      <div class="book-card">
+        <img src="car.jpeg" alt="Book">
+        <p>Cardiac Surgery</p>
+      </div>
+      <div class="book-card">
+        <img src="nex.jpeg" alt="Book">
+        <p>Neurology Explained</p>
+      </div>
+      <div class="book-card">
+        <img src="pe.jpeg" alt="Book">
+        <p>Pediatric Care</p>
+      </div>
+    </div>
+  </div>  <script>
+    function login(type) {
+      let email, pass;
+      if (type === 'admin') {
+        email = document.getElementById('adminEmail').value;
+        pass = document.getElementById('adminPass').value;
+      } else {
+        email = document.getElementById('libEmail').value;
+        pass = document.getElementById('libPass').value;
+      }
+
+      if (email && pass) {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('libraryPage').classList.remove('hidden');
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+  </script></body>
+</html>
